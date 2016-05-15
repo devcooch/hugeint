@@ -1,0 +1,5 @@
+enable_testing()
+add_executable(test_hugeint main.cpp)
+find_package(HugeInt)
+target_include_directories(test_hugeint PRIVATE ${HUGEINT_INCLUDE_DIRS})
+add_test(NAME test_hugeint COMMAND test_hugeint)
