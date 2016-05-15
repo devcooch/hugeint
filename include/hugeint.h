@@ -102,21 +102,21 @@ struct hugeint
 
     static int cmp( const hugeint& x, const hugeint& y )
     {
-        if ( v.size( ) < other.v.size( ) )
+        if ( x.v.size( ) < y.v.size( ) )
         {
             return -1;
         }
-        if ( v.size( ) > other.v.size( ) )
+        if ( x.v.size( ) > y.v.size( ) )
         {
             return 1;
         }
-        for ( size_t i = v.size( ); i > 0; --i )
+        for ( size_t i = x.v.size( ); i > 0; --i )
         {
-            if ( v[ i - 1 ] < other.v[ i - 1 ] )
+            if ( x.v[ i - 1 ] < y.v[ i - 1 ] )
             {
                 return -1;
             }
-            if ( v[ i - 1 ] > other.v[ i - 1 ] )
+            if ( x.v[ i - 1 ] > y.v[ i - 1 ] )
             {
                 return 1;
             }
