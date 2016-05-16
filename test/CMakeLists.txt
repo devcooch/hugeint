@@ -14,7 +14,7 @@ ExternalProject_Add(googletest
 )
 ExternalProject_Get_Property(googletest SOURCE_DIR BINARY_DIR)
 enable_testing()
-add_executable(test_hugeint main.cpp)
+add_executable(test_hugeint tests.cpp)
 find_package(HugeInt CONFIG)
 target_include_directories(test_hugeint
     PRIVATE
