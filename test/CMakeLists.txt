@@ -1,7 +1,6 @@
 include(ExternalProject)
 set(GTEST_VERSION "1.7.0")
 set(GTEST_DIR "${CMAKE_CURRENT_BINARY_DIR}/googletest-${GTEST_VERSION}")
-set(GTEST_FORCE_SHARED_CRT ON CACHE BOOL "" FORCE)
 ExternalProject_Add(googletest
     GIT_REPOSITORY git@github.com:google/googletest.git
     GIT_TAG release-${GTEST_VERSION}
@@ -9,6 +8,7 @@ ExternalProject_Add(googletest
     LOG_DOWNLOAD ON
     LOG_CONFIGURE ON
     LOG_BUILD ON
+    CMAKE_ARGS -Dgtest_force_shared_crt=ON
     UPDATE_COMMAND ""
     INSTALL_COMMAND ""
 )
