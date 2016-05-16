@@ -13,6 +13,11 @@ struct hugeint
     static_assert( N >= 1, "N >= 1" );
     static_assert( N <= 9, "N <= 9" );
 
+    hugeint( )
+        : v( {0} )
+    {
+    }
+
     static constexpr int_t
     get_one( int_t n )
     {
@@ -23,7 +28,7 @@ struct hugeint
 
     static constexpr int_t den = one + 1;
 
-    hugeint( int_t x = 0 )
+    hugeint( int_t x )
     {
         while ( x > 0 )
         {
@@ -100,7 +105,8 @@ struct hugeint
         return *this;
     }
 
-    static int cmp( const hugeint& x, const hugeint& y )
+    static int
+    cmp( const hugeint& x, const hugeint& y )
     {
         if ( x.v.size( ) < y.v.size( ) )
         {
@@ -188,11 +194,12 @@ operator<<( std::ostream& os, const hugeint< N >& x )
 {
     os << *x.v.rbegin( );
     keep_flags kf( os );
+    os << std::setw( N ) << std::setfill( '0' );
     for ( auto it = x.v.rbegin( ) + 1; it != x.v.rend( ); ++it )
     {
-        os << std::setw( N ) << std::setfill( '0' ) << *it;
+        os << *it;
     }
-    os << '[' << x.v.size( ) << ']';
+    // os << '[' << x.v.size( ) << ']';
     return os;
 }
 }
